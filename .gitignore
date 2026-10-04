@@ -1,0 +1,16 @@
+# Virtual environments
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment variables (Never commit database URLs or secret keys)
+.env
+
+# Database files
+instance/
+*.sqlite3
+*.db
