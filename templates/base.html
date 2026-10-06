@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}RealEstateDog{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <h2 class="navbar-brand">App Brand</h2>
+            <div class="navbar-nav d-flex flex-row gap-3 ms-auto mb-2 mb-lg-0"> 
+                {% if session.get('role')== 'admin' %}
+                <span style="color: white;">{{ session.get('username', '') }}</span>
+                <div class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></div>
+                <div class="nav-item"><a href="#" class="nav-link active" aria-current="page">User</a></div>
+                <div class="nav-item"><a href="#" class="nav-link active" aria-current="page">RealEstate</a></div>
+                <div class="nav-item"><a href="#" class="nav-link active" aria-current="page">Visiting</a></div>
+                <div class="nav-item"><a href="#" class="nav-link active" aria-current="page">About Us</a></div>
+                <!-- {% else %}
+                <div class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></div>
+                <div class="nav-item"><a href="#" class="nav-link active" aria-current="page">My Profile</a></div>
+                <div class="nav-item"><a href="#" class="nav-link active" aria-current="page">RealEstate</a></div>
+                <div class="nav-item"><a href="#" class="nav-link active" aria-current="page">Visiting</a></div>
+                <div class="nav-item"><a href="#" class="nav-link active" aria-current="page">About Us</a></div>
+                {% endif %} -->
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid flex-grow-1 mb-5 px-3 py-3">
+         <form action="/search" method="GET" class="search-box row g-0 align-items-center">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" name="location" placeholder="City, Locality, or Landmark...">
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select" name="type">
+                        <option value="" selected disabled>Property Type</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="villa">Villa</option>
+                        <option value="plot">Plot / Land</option>
+                    </select>
+                </div>
+                <div class="col-md-3 p-1">
+                    <button type="submit" class="btn-search">Search</button>
+                </div>
+            </form>
+        {% block content%} {% endblock %}
+    </div>
+    <footer >
+        <div class='fixed-bottom py-3 d-flex justify-content-center bg-secondary'>
+            <p>&copy RealEstateDog | A RealEstate Focues Application.</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
